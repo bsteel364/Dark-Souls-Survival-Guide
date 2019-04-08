@@ -4,7 +4,7 @@
  * CS 440					   //  \\		   
  */
 .root{
-    -fx-background-color: #383838;
+    -fx-background-color: #272121;
 }
 
 
@@ -12,11 +12,11 @@
     -fx-text-fill: #e8e8e8;
 }
 .button-red{
-    -fx-background-color: #AB4642;
+    -fx-background-color: #8B0000;
 }
 .button-blue{
     -fx-background-color: #7cafc2;
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: #faf2f4;
     -fx-background-radius: 4;
 }
 #bold-label{
