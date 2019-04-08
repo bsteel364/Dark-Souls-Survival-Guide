@@ -79,7 +79,6 @@ public class Controller implements Initializable {
     ////////////////////////////////////////////////////////////////////
     @FXML public MenuItem quit;
 	
-	
    public void quitItemClicked() {
 	   Main.stage.close();
    }
@@ -93,8 +92,10 @@ public class Controller implements Initializable {
    @FXML public ListView<String> location_list;
    
    public void fillLocationList() {
-	   location_list.getItems().add("Hello");
-	   
+	//location_list.getItems().add("Hello");
+	//location_list.setVisible(false);
+	//System.out.println(location_list.getId());
+	   System.out.print("We can find the method");
    }
    
    
