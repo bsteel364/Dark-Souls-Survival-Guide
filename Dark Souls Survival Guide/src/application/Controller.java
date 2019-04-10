@@ -27,8 +27,10 @@ import java.awt.Toolkit;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import database.QueryManager;
 import drivers.ConnectionDriver;
 
 public class Controller implements Initializable {
@@ -57,7 +59,7 @@ public class Controller implements Initializable {
     	Parent root = FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
     	Scene scene = new Scene(root);
     	
-    	//scene.getStylesheets().add("application1.css");   	
+    	scene.getStylesheets().add("application1.css");   	
     	Main.stage.setScene(scene);
     	
     	Main.stage.show();
@@ -91,11 +93,16 @@ public class Controller implements Initializable {
    
    @FXML public ListView<String> location_list;
    
-   public void fillLocationList() {
-	//location_list.getItems().add("Hello");
-	//location_list.setVisible(false);
-	//System.out.println(location_list.getId());
+   public void fillLocationList() throws SQLException {
+	   ArrayList<String> locationNamesArrayList = QueryManager.getLocationNames();
+	   for(int i = 0; i < locationNamesArrayList.size(); i++) {
+		   location_list.getItems().add(locationNamesArrayList.get(i));
+	   }
+	   
+	   //location_list.setVisible(false);
+	   //System.out.println(location_list.getId());
 	   System.out.print("We can find the method");
+	   
    }
    
    
