@@ -18,28 +18,37 @@ import drivers.ConnectionDriver;
 public class QueryManager {
 
 	
+	/**
+	 * 
+	 * @return a <code> ArrayList </code> of the location names 
+	 * @throws SQLException
+	 */
 	public static ArrayList<String> getLocationNames() throws SQLException{
 		
 		ArrayList<String> locationList = new ArrayList<String>();
-		final String LOCATION_TABLE = "LOCATION";
 	
-		final String query = "SELECT LOCATION_NAME FROM " + LOCATION_TABLE;
-		Statement statement = ConnectionDriver.connection.createStatement(); // INJECTION RISK
+		final String query = "SELECT LOCATION_NAME FROM LOCATION";
+		Statement statement = ConnectionDriver.connection.createStatement();
 	
 		ResultSet resultSet = statement.executeQuery(query);
-	
-		final ResultSetMetaData meta = resultSet.getMetaData();
-		final int rows = resultSet.getFetchSize(),
-			  columns = meta.getColumnCount();
-		
-		
-		int i = 1;
+				
 		while(resultSet.next()) {
-			System.out.println(resultSet.getString(i));
-			locationList.add(resultSet.getString(i));
-			//i++;
+			//System.out.println(resultSet.getString(1));
+			locationList.add(resultSet.getString(1));
 		}
 		return locationList;
+	}
+	
+	public static String getLocationDescription(String locationName) throws SQLException {
+		String description = new String();
 		
+		final String query = "SELECT DESCRIPTION FROM LOCATION WHERE LOCATION_NAME = '" + locationName + "'";
+		Statement statement = ConnectionDriver.connection.createStatement();
+		
+		ResultSet resultSet = statement.executeQuery(query);
+		
+		resultSet.next();
+		description = resultSet.getString(1);
+		return description;
 	}
 }

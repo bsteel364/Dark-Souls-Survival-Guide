@@ -59,11 +59,12 @@ public class Controller implements Initializable {
     	Parent root = FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
     	Scene scene = new Scene(root);
     	
-    	scene.getStylesheets().add("application1.css");   	
+    	//scene.getStylesheets().add("application1.css");   	
     	Main.stage.setScene(scene);
     	
     	Main.stage.show();
-    	fillLocationList();
+    	//fillLocationList();
+    	
     }
     
     public static String getUsername() {
@@ -92,17 +93,20 @@ public class Controller implements Initializable {
    
    
    @FXML public ListView<String> location_list;
+   @FXML public TextArea location_description;
    
    public void fillLocationList() throws SQLException {
 	   ArrayList<String> locationNamesArrayList = QueryManager.getLocationNames();
 	   for(int i = 0; i < locationNamesArrayList.size(); i++) {
 		   location_list.getItems().add(locationNamesArrayList.get(i));
 	   }
-	   
-	   //location_list.setVisible(false);
-	   //System.out.println(location_list.getId());
-	   System.out.print("We can find the method");
-	   
+   }
+   
+   public void writeLocationDescription() throws SQLException {
+	   String selectedLocation = location_list.getSelectionModel().getSelectedItem();
+	   String description = QueryManager.getLocationDescription(selectedLocation);
+	   System.out.print(description);
+	   location_description.setText(description);
    }
    
    
