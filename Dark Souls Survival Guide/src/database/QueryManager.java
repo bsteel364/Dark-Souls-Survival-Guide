@@ -39,6 +39,12 @@ public class QueryManager {
 		return locationList;
 	}
 	
+	/**
+	 * 
+	 * @param locationName 
+	 * @return <code> String description </code> - the DESCRIPTION field of the LOCATION relation from the row indicated by the <code> LOCATION_NAME </code>
+	 * @throws SQLException
+	 */
 	public static String getLocationDescription(String locationName) throws SQLException {
 		String description = new String();
 		
