@@ -5,6 +5,7 @@
  */
 package application;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -15,6 +16,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -33,10 +37,11 @@ public class Main extends Application {
         stage.setTitle("Connection Login");
         Scene scene = new Scene(root);
         scene.getStylesheets().add("application1.css");//why won't you accept my fonts
-        
+        System.out.println("dsfsdfdsdsfd");
+        Font myFont = Font.loadFont(Main.class.getResourceAsStream("/OptimusPrinceps.tff"), 14);
         stage.setScene(scene);
-        stage.show();
         
+        stage.show();
         
     }
 

@@ -33,6 +33,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 import database.QueryManager;
 import drivers.ConnectionDriver;
@@ -57,6 +58,18 @@ public class Controller implements Initializable {
     private static String password;
     
     public void connect() throws SQLException, IOException {
+//    	
+//    	Media confirm = new Media(new File("src/slash.mp3").toURI().toString());
+//    	MediaPlayer btnNoise = new MediaPlayer(confirm);
+//    	btnNoise.play();
+//    	
+//    	try {
+//			Thread.sleep(200);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//    	
     	username = usernameField.getText();
     	password = passwordField.getText();
     	ConnectionDriver.setConnection();
@@ -68,6 +81,7 @@ public class Controller implements Initializable {
     	
     	Media opening = new Media(new File("src/dead.mp3").toURI().toString());
     	MediaPlayer fanfareOFDespair = new MediaPlayer(opening);	
+    	
     	
     	scene.getStylesheets().add("application1.css");   	
     	Main.stage.setScene(scene);
