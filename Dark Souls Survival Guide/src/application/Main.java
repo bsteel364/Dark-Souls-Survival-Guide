@@ -29,10 +29,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
     	stage = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("Connect.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Connect.fxml"));   
         stage.setTitle("Connection Login");
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("application1.css");
+        scene.getStylesheets().add("application1.css");//why won't you accept my fonts
+        
         stage.setScene(scene);
         stage.show();
         

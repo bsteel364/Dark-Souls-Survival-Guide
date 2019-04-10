@@ -21,9 +21,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -56,11 +60,18 @@ public class Controller implements Initializable {
     	username = usernameField.getText();
     	password = passwordField.getText();
     	ConnectionDriver.setConnection();
+    	
+    	//Font.loadFont()
+    	
     	Parent root = FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
     	Scene scene = new Scene(root);
     	
-    	//scene.getStylesheets().add("application1.css");   	
+    	Media opening = new Media(new File("src/dead.mp3").toURI().toString());
+    	MediaPlayer fanfareOFDespair = new MediaPlayer(opening);	
+    	
+    	scene.getStylesheets().add("application1.css");   	
     	Main.stage.setScene(scene);
+    	fanfareOFDespair.play();
     	
     	Main.stage.show();
     	//fillLocationList();
