@@ -58,18 +58,7 @@ public class Controller implements Initializable {
     private static String password;
     
     public void connect() throws SQLException, IOException {
-//    	
-//    	Media confirm = new Media(new File("src/slash.mp3").toURI().toString());
-//    	MediaPlayer btnNoise = new MediaPlayer(confirm);
-//    	btnNoise.play();
-//    	
-//    	try {
-//			Thread.sleep(200);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//    	
+
     	username = usernameField.getText();
     	password = passwordField.getText();
     	ConnectionDriver.setConnection();

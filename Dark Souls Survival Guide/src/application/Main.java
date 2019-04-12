@@ -27,7 +27,16 @@ public class Main extends Application {
 	
     public static void main(String[] args) throws SQLException {
         launch(args);     		 
+//      	
+//      //plays when the application closes  
+//    	Media confirm = new Media(new File("src/slash.mp3").toURI().toString());
+//    	MediaPlayer btnNoise = new MediaPlayer(confirm);
+//    	
+//    	btnNoise.play();
+//    	
+    	
         System.out.println("Application Closed");
+        
     }
 
     @Override

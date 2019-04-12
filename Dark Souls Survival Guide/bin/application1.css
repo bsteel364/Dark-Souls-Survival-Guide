@@ -5,12 +5,12 @@
  */
  
  @font-face {
- 	font-family: DS;
+ 	
  	src: url('OptimusPrinceps.ttf');
  }
  
  @font-face {
- 	font-family: DSbold;
+ 	
  	src: url('OptimusPrincepsSemiBold.tff');
  }
  
@@ -39,7 +39,7 @@
 }
 
 .text-area {
-    -fx-font-family: ds;
+    -fx-font-family: "Optimus Princeps";
     -fx-font-size: 15;
     -fx-text-fill: white;
     -fx-display-caret:true;
@@ -48,35 +48,59 @@
 
 .text-area .content{
       -fx-background-color: black;
-      -fx-font-family: DS;
+      -fx-font-family: "Optimus Princeps";
   }
 
 .label{
-	-fx-font-family: DS;
+	-fx-font-family: "Optimus Princeps";
     -fx-text-fill: #808080;
 }
 .button-red{
-	-fx-font-family: DS;
+	-fx-font-family: "Optimus Princeps";
     -fx-background-color: #8B0000;
 }
 .button-blue{
-	/*-fx-font-family: DS;*/
+	/*-fx-font-family: "OptimusPrinceps";*/
     -fx-background-color: #7cafc2;
     -fx-text-fill: #faf2f4;
     -fx-background-radius: 6;
 }
 #bold-label{
     -fx-font-weight: bold;
-    -fx-font-family: DSbold;
+    -fx-font-family: "Arial";
 }
 
 .tab-pane:top *.tab-header-area {
-	-fx-font-family: DS;
+	-fx-font-family: "Optimus Princeps";
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.417em 0.17em 0.0em 0.0em;
+}/*Add in for bottom pane as well*/
+
+.tab-pane .tab
+{
+    -fx-background-color: #1e1e1e;
+
+}
+
+.tab-pane .tab:selected
+{
+    -fx-background-color: #3c3c3c;
+}
+
+.tab .tab-label { 
+	-fx-font-family: "Optimus Princeps Semi Bold";
+    -fx-alignment: CENTER;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #a0a0a0;
 }
 
 .input[type=text]{
-	-fx-font-family: DS;	
+	-fx-font-family: "Optimus Princeps";	
 	
 }
