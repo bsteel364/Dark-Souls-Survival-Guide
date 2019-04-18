@@ -105,7 +105,7 @@ public class Controller implements Initializable {
     		  Control Variables/Methods for Content Explorer
    \********************************************************************/
    
-   
+   ////////////////////////// LOCATIONS TAB ////////////////////////////
    @FXML public ListView<String> location_list;
    @FXML public TextArea location_description;
    
