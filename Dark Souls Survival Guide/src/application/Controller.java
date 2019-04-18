@@ -76,7 +76,7 @@ public class Controller implements Initializable {
     	Main.stage.setScene(scene);
     	fanfareOFDespair.play();
     	
-    	Main.stage.show();
+    	
     	//fillLocationList();
     	
     }
@@ -105,14 +105,21 @@ public class Controller implements Initializable {
     		  Control Variables/Methods for Content Explorer
    \********************************************************************/
    
+   public void fillLists() throws SQLException {
+	   fillLocationList();
+	   fillItemList();
+   }
+   
    ////////////////////////// LOCATIONS TAB ////////////////////////////
    @FXML public ListView<String> location_list;
    @FXML public TextArea location_description;
    
    public void fillLocationList() throws SQLException {
-	   ArrayList<String> locationNamesArrayList = QueryManager.getLocationNames();
-	   for(int i = 0; i < locationNamesArrayList.size(); i++) {
-		   location_list.getItems().add(locationNamesArrayList.get(i));
+	   if(location_list.getItems().isEmpty()) {
+		   ArrayList<String> locationNamesArrayList = QueryManager.getLocationNames();
+	   		for(int i = 0; i < locationNamesArrayList.size(); i++) {
+	   			location_list.getItems().add(locationNamesArrayList.get(i));
+	   		}
 	   }
    }
    
@@ -121,8 +128,29 @@ public class Controller implements Initializable {
 	   String description = QueryManager.getLocationDescription(selectedLocation);
 	   System.out.print(description);
 	   location_description.setText(description);
+	   
    }
    
+   ////////////////////////// Items TAB ////////////////////////////
+   @FXML public ListView<String> item_list;
+   @FXML public TextArea item_description;
+   
+   public void fillItemList() throws SQLException {
+	   if(item_list.getItems().isEmpty()) {
+		   ArrayList<String> locationNamesArrayList = QueryManager.getItemNames();
+	   		for(int i = 0; i < locationNamesArrayList.size(); i++) {
+	   			item_list.getItems().add(locationNamesArrayList.get(i));
+	   		}
+	   }
+   }
+   
+   public void writeItemDescription() throws SQLException {
+	   String selectedItem = item_list.getSelectionModel().getSelectedItem();
+	   String description = QueryManager.getItemDescription(selectedItem);
+	   System.out.print(description);
+	   item_description.setText(description);
+	   
+   }
    
    
    

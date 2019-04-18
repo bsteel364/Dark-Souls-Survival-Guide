@@ -51,4 +51,37 @@ public class QueryManager {
 		description = resultSet.getString(1);
 		return description;
 	}
+	
+	
+
+	
+	public static ArrayList<String> getItemNames() throws SQLException{
+		
+		ArrayList<String> locationList = new ArrayList<String>();
+	
+		final String query = "SELECT ITEM_ID FROM ITEM";
+		Statement statement = ConnectionDriver.connection.createStatement();
+	
+		ResultSet resultSet = statement.executeQuery(query);
+				
+		while(resultSet.next()) {
+			//System.out.println(resultSet.getString(1));
+			locationList.add(resultSet.getString(1));
+		}
+		return locationList;
+	}
+	
+	
+	public static String getItemDescription(String itemName) throws SQLException {
+		String description = new String();
+		
+		final String query = "SELECT DESCRIPTION FROM ITEM WHERE ITEM_ID = '" + itemName + "'";
+		Statement statement = ConnectionDriver.connection.createStatement();
+		
+		ResultSet resultSet = statement.executeQuery(query);
+		
+		resultSet.next();
+		description = resultSet.getString(1);
+		return description;
+	}
 }
