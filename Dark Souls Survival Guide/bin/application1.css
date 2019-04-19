@@ -3,7 +3,7 @@
  * Team LAMBDA 					//\\	
  * CS 440					   //  \\		   
  */
- 
+
  @font-face {
  	
  	src: url('OptimusPrinceps.ttf');
@@ -17,6 +17,7 @@
 .root{
 	
     -fx-background-color: #513232;
+    -fx-font-family: "OptimusPrinceps";
 }
 
 
@@ -39,7 +40,7 @@
 }
 
 .text-area {
-    -fx-font-family: "Optimus Princeps";
+    -fx-font-family: "OptimusPrinceps";
     -fx-font-size: 15;
     -fx-text-fill: white;
     -fx-display-caret:true;
@@ -47,16 +48,16 @@
 
 
 .text-area .content{
-      -fx-background-color: black;
-      -fx-font-family: "Optimus Princeps";
+      -fx-background-color: #1e1e1e;
+      -fx-font-family: "OptimusPrinceps";
   }
 
 .label{
-	-fx-font-family: "Optimus Princeps";
+	-fx-font-family: "OptimusPrinceps";
     -fx-text-fill: #808080;
 }
 .button-red{
-	-fx-font-family: "Optimus Princeps";
+	-fx-font-family: "OptimusPrinceps";
     -fx-background-color: #8B0000;
 }
 .button-blue{
@@ -67,28 +68,31 @@
 }
 #bold-label{
     -fx-font-weight: bold;
-    -fx-font-family: "Arial";
+    -fx-font-family: "OptimusPrinceps";
 }
 
 .tab-pane:top *.tab-header-area {
-	-fx-font-family: "Optimus Princeps";
+	-fx-font-family: "OptimusPrinceps";
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.417em 0.17em 0.0em 0.0em;
 }/*Add in for bottom pane as well*/
 
-.tab-pane .tab
-{
-    -fx-background-color: #1e1e1e;
-
+.tab-pane *.tab-header-background{
+	-fx-background-color: #cfb5b5, derive(#cfa5a5, -38%);
+	-fx-effect: innershadow(gaussian , rgba(153,148,148,0.4) , 2, 0.0 , 0 , 0);
 }
 
-.tab-pane .tab:selected
-{
+.tab-pane .tab{
+    -fx-background-color: #1e1e1e;
+	-fx-faint-focus-color: transparent;
+}
+
+.tab-pane .tab:selected{
     -fx-background-color: #3c3c3c;
 }
 
 .tab .tab-label { 
-	-fx-font-family: "Optimus Princeps Semi Bold";
+	-fx-font-family: "OptimusPrincepsSemiBold";
     -fx-alignment: CENTER;
     -fx-text-fill: #ffffff;
     -fx-font-size: 14px;
@@ -100,7 +104,42 @@
     -fx-text-fill: #a0a0a0;
 }
 
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-color: transparent;
+}
+
 .input[type=text]{
-	-fx-font-family: "Optimus Princeps";	
+	-fx-font-family: "OptimusPrinceps";	
 	
+}
+
+.menu-bar{
+  -fx-background-color: #513232;
+ -fx-focus-color: transparent;
+
+}
+
+.menu-bar .label {
+    -fx-font-size: 14 pt;
+    -fx-font-family: DS;
+    -fx-text-fill: #8B8B8B;
+
+}
+
+
+.menu:hover {
+    -fx-background-color: #a05050;
+}
+
+.menu-item .label{
+     -fx-font-size: 14 pt;
+      -fx-background-color: #a05050;
+}
+
+.context-menu {
+    
+    -fx-background-color: #a05050;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
+    -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; 
 }
