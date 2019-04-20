@@ -57,8 +57,8 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <ListView layoutX="14.0" layoutY="14.0" prefHeight="480.0" prefWidth="350.0" />
-                                          <TextArea layoutX="405.0" layoutY="14.0" prefHeight="200.0" prefWidth="400.0" />
+                                          <ListView fx:id="npc_list" layoutX="14.0" layoutY="14.0" onMouseClicked="#writeNPCDescription" prefHeight="480.0" prefWidth="350.0" />
+                                          <TextArea fx:id="npc_description" layoutX="405.0" layoutY="14.0" prefHeight="200.0" prefWidth="400.0" wrapText="true" />
                                        </children></AnchorPane>
                               </content>
                             </Tab>
@@ -66,8 +66,8 @@
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <ListView layoutX="14.0" layoutY="14.0" prefHeight="480.0" prefWidth="350.0" />
-                                          <TextArea layoutX="405.0" layoutY="14.0" prefHeight="200.0" prefWidth="400.0" />
+                                          <ListView fx:id="boss_list" layoutX="14.0" layoutY="14.0" onMouseClicked="#writeBossDescription" prefHeight="480.0" prefWidth="350.0" />
+                                          <TextArea fx:id="boss_description" layoutX="405.0" layoutY="14.0" prefHeight="200.0" prefWidth="400.0" wrapText="true" />
                                        </children></AnchorPane>
                                 </content>
                               </Tab>
@@ -84,8 +84,8 @@
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <ListView layoutX="14.0" layoutY="14.0" prefHeight="480.0" prefWidth="350.0" />
-                                          <TextArea layoutX="405.0" layoutY="14.0" prefHeight="200.0" prefWidth="400.0" />
+                                          <ListView fx:id="weapon_list" layoutX="14.0" layoutY="14.0" onMouseClicked="#writeWeaponDescription" prefHeight="480.0" prefWidth="350.0" />
+                                          <TextArea fx:id="weapon_description" layoutX="405.0" layoutY="14.0" prefHeight="200.0" prefWidth="400.0" />
                                        </children></AnchorPane>
                                 </content>
                               </Tab>
@@ -93,8 +93,8 @@
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <ListView layoutX="14.0" layoutY="14.0" prefHeight="480.0" prefWidth="350.0" />
-                                          <TextArea layoutX="405.0" layoutY="14.0" prefHeight="200.0" prefWidth="400.0" />
+                                          <ListView fx:id="wearable_list" layoutX="14.0" layoutY="14.0" onMouseClicked="#writeWearableDescription" prefHeight="480.0" prefWidth="350.0" />
+                                          <TextArea fx:id="wearable_description" layoutX="405.0" layoutY="14.0" prefHeight="200.0" prefWidth="400.0" />
                                        </children></AnchorPane>
                                 </content>
                               </Tab>

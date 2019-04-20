@@ -40,8 +40,9 @@ public class QueryManager {
 	}
 	
 	public static String getLocationDescription(String locationName) throws SQLException {
+		/* REMEMBER - Sanitize SQL query for apostrophes, SQL exception */
 		String description = new String();
-		
+		locationName = locationName.replace("'", "\'");  //This is NOT working yet...
 		final String query = "SELECT DESCRIPTION FROM LOCATION WHERE LOCATION_NAME = '" + locationName + "'";
 		Statement statement = ConnectionDriver.connection.createStatement();
 		
@@ -76,6 +77,127 @@ public class QueryManager {
 		String description = new String();
 		
 		final String query = "SELECT DESCRIPTION FROM ITEM WHERE ITEM_ID = '" + itemName + "'";
+		Statement statement = ConnectionDriver.connection.createStatement();
+		
+		ResultSet resultSet = statement.executeQuery(query);
+		
+		resultSet.next();
+		description = resultSet.getString(1);
+		return description;
+	}
+	
+	
+	public static ArrayList<String> getNPCNames() throws SQLException{
+		
+		ArrayList<String> NPCList = new ArrayList<String>();
+	
+		final String query = "SELECT NPC_NAME FROM NPC";
+		Statement statement = ConnectionDriver.connection.createStatement();
+	
+		ResultSet resultSet = statement.executeQuery(query);
+				
+		while(resultSet.next()) {
+			//System.out.println(resultSet.getString(1));
+			NPCList.add(resultSet.getString(1));
+		}
+		return NPCList;
+	}
+	
+	
+	public static String getNPCDescription(String NPCName) throws SQLException {
+		String description = new String();
+		
+		final String query = "SELECT DESCRIPTION FROM NPC WHERE NPC_NAME = '" + NPCName + "'";
+		Statement statement = ConnectionDriver.connection.createStatement();
+		
+		ResultSet resultSet = statement.executeQuery(query);
+		
+		resultSet.next();
+		description = resultSet.getString(1);
+		return description;
+	}
+	
+	public static ArrayList<String> getBossNames() throws SQLException{
+		
+		ArrayList<String> BossList = new ArrayList<String>();
+	
+		final String query = "SELECT BOSS_ID FROM BOSS";
+		Statement statement = ConnectionDriver.connection.createStatement();
+	
+		ResultSet resultSet = statement.executeQuery(query);
+				
+		while(resultSet.next()) {
+			//System.out.println(resultSet.getString(1));
+			BossList.add(resultSet.getString(1));
+		}
+		return BossList;
+	}
+	
+	
+	public static String getBossDescription(String BossName) throws SQLException {
+		String description = new String();
+		
+		final String query = "SELECT DESCRIPTION FROM BOSS WHERE BOSS_ID = '" + BossName + "'";
+		Statement statement = ConnectionDriver.connection.createStatement();
+		
+		ResultSet resultSet = statement.executeQuery(query);
+		
+		resultSet.next();
+		description = resultSet.getString(1);
+		return description;
+	}
+	
+	public static ArrayList<String> getWeaponNames() throws SQLException{
+		
+		ArrayList<String> WeaponList = new ArrayList<String>();
+	
+		final String query = "SELECT WEAPON_ID FROM WEAPON";
+		Statement statement = ConnectionDriver.connection.createStatement();
+	
+		ResultSet resultSet = statement.executeQuery(query);
+				
+		while(resultSet.next()) {
+			//System.out.println(resultSet.getString(1));
+			WeaponList.add(resultSet.getString(1));
+		}
+		return WeaponList;
+	}
+	
+	
+	public static String getWeaponDescription(String WeaponName) throws SQLException {
+		String description = new String();
+		
+		final String query = "SELECT DESCRIPTION FROM WEAPON WHERE WEAPON_ID = '" + WeaponName + "'";
+		Statement statement = ConnectionDriver.connection.createStatement();
+		
+		ResultSet resultSet = statement.executeQuery(query);
+		
+		resultSet.next();
+		description = resultSet.getString(1);
+		return description;
+	}
+	
+	public static ArrayList<String> getWearableNames() throws SQLException{
+		
+		ArrayList<String> WearableList = new ArrayList<String>();
+	
+		final String query = "SELECT WEARABLE_ID FROM WEARABLE";
+		Statement statement = ConnectionDriver.connection.createStatement();
+	
+		ResultSet resultSet = statement.executeQuery(query);
+				
+		while(resultSet.next()) {
+			//System.out.println(resultSet.getString(1));
+			WearableList.add(resultSet.getString(1));
+		}
+		return WearableList;
+	}
+	
+	
+	public static String getWearableDescription(String WearableName) throws SQLException {
+		String description = new String();
+		
+		final String query = "SELECT DESCRIPTION FROM WEARABLE WHERE WEARABLE_ID = '" + WearableName + "'";
 		Statement statement = ConnectionDriver.connection.createStatement();
 		
 		ResultSet resultSet = statement.executeQuery(query);

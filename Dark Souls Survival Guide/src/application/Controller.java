@@ -108,6 +108,10 @@ public class Controller implements Initializable {
    public void fillLists() throws SQLException {
 	   fillLocationList();
 	   fillItemList();
+	   fillBossList();
+	   fillNPCList();
+	   fillWeaponList();
+	   fillWearableList();
    }
    
    ////////////////////////// LOCATIONS TAB ////////////////////////////
@@ -131,15 +135,15 @@ public class Controller implements Initializable {
 	   
    }
    
-   ////////////////////////// Items TAB ////////////////////////////
+   ////////////////////////// ITEMS TAB ////////////////////////////////
    @FXML public ListView<String> item_list;
    @FXML public TextArea item_description;
    
    public void fillItemList() throws SQLException {
 	   if(item_list.getItems().isEmpty()) {
-		   ArrayList<String> locationNamesArrayList = QueryManager.getItemNames();
-	   		for(int i = 0; i < locationNamesArrayList.size(); i++) {
-	   			item_list.getItems().add(locationNamesArrayList.get(i));
+		   ArrayList<String> itemNamesArrayList = QueryManager.getItemNames();
+	   		for(int i = 0; i < itemNamesArrayList.size(); i++) {
+	   			item_list.getItems().add(itemNamesArrayList.get(i));
 	   		}
 	   }
    }
@@ -149,9 +153,87 @@ public class Controller implements Initializable {
 	   String description = QueryManager.getItemDescription(selectedItem);
 	   System.out.print(description);
 	   item_description.setText(description);
-	   
    }
    
+   ////////////////////////// ITEMS TAB ////////////////////////////////
+   @FXML public ListView<String> boss_list;
+   @FXML public TextArea boss_description;
+   
+   public void fillBossList() throws SQLException {
+	   if(boss_list.getItems().isEmpty()) {
+		   ArrayList<String> bossNamesArrayList = QueryManager.getBossNames();
+	   		for(int i = 0; i < bossNamesArrayList.size(); i++) {
+	   			boss_list.getItems().add(bossNamesArrayList.get(i));
+	   		}
+	   }
+   }
+   
+   public void writeBossDescription() throws SQLException {
+	   String selectedItem = boss_list.getSelectionModel().getSelectedItem();
+	   String description = QueryManager.getBossDescription(selectedItem);
+	   System.out.print(description);
+	   boss_description.setText(description);
+   }
+   
+   ////////////////////////// NPC TAB ////////////////////////////////
+   @FXML public ListView<String> npc_list;
+   @FXML public TextArea npc_description;
+   
+   public void fillNPCList() throws SQLException {
+	   if(npc_list.getItems().isEmpty()) {
+		   ArrayList<String> npcNamesArrayList = QueryManager.getNPCNames();
+	   		for(int i = 0; i < npcNamesArrayList.size(); i++) {
+	   			npc_list.getItems().add(npcNamesArrayList.get(i));
+	   		}
+	   }
+   }
+   
+   public void writeNPCDescription() throws SQLException {
+	   String selectedItem = npc_list.getSelectionModel().getSelectedItem();
+	   String description = QueryManager.getNPCDescription(selectedItem);
+	   System.out.print(description);
+	   npc_description.setText(description);
+   }
+   
+   ////////////////////////// WEAPONS TAB ////////////////////////////////
+   @FXML public ListView<String> weapon_list;
+   @FXML public TextArea weapon_description;
+   
+   public void fillWeaponList() throws SQLException {
+	   if(weapon_list.getItems().isEmpty()) {
+		   ArrayList<String> weaponNamesArrayList = QueryManager.getWeaponNames();
+	   		for(int i = 0; i < weaponNamesArrayList.size(); i++) {
+	   			weapon_list.getItems().add(weaponNamesArrayList.get(i));
+	   		}
+	   }
+   }
+   
+   public void writeWeaponDescription() throws SQLException {
+	   String selectedItem = weapon_list.getSelectionModel().getSelectedItem();
+	   String description = QueryManager.getWeaponDescription(selectedItem);
+	   System.out.print(description);
+	   weapon_description.setText(description);
+   }
+   
+   ////////////////////////// WEAPONS TAB ////////////////////////////////
+   @FXML public ListView<String> wearable_list;
+   @FXML public TextArea wearable_description;
+   
+   public void fillWearableList() throws SQLException {
+	   if(wearable_list.getItems().isEmpty()) {
+		   ArrayList<String> WearableNamesArrayList = QueryManager.getWearableNames();
+	   		for(int i = 0; i < WearableNamesArrayList.size(); i++) {
+	   			wearable_list.getItems().add(WearableNamesArrayList.get(i));
+	   		}
+	   }
+   }
+   
+   public void writeWearableDescription() throws SQLException {
+	   String selectedItem = wearable_list.getSelectionModel().getSelectedItem();
+	   String description = QueryManager.getWearableDescription(selectedItem);
+	   System.out.print(description);
+	   wearable_description.setText(description);
+   }
    
    
    
