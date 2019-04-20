@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
@@ -236,9 +237,52 @@ public class Controller implements Initializable {
    }
    
    
+   /********************************************************************\
+	  			Control Variables/Methods for FAQs
+   \********************************************************************/
+   
+   //fxml variable names for combo boxes should be "faq_<question type>_<table | row>_box"
+   @FXML public ComboBox<String> faq_where_table_box;
+   @FXML public ComboBox<String> faq_where_row_box;
+   @FXML public TextArea faq_where_result;
+   
+   public void fillComboBoxes() {
+	   fillWhereTableBox();
+   }
+   
+   public void fillWhereTableBox() {
+	   faq_where_table_box.getItems().add("Boss");
+	   faq_where_table_box.getItems().add("NPC");
+	   faq_where_table_box.getItems().add("Weapon");
+	   faq_where_table_box.getItems().add("Wearable");
+	   faq_where_table_box.getItems().add("Item");
+   }
    
    
-   
+   public void fillWhereRowBox() throws SQLException {
+	   String table = faq_where_table_box.getSelectionModel().getSelectedItem().toUpperCase();
+	   ArrayList<String> items = new ArrayList<String>();
+	   faq_where_row_box.getItems().clear();
+	   if(table.equalsIgnoreCase("BOSS")) {
+		   items = QueryManager.getBossNames();
+	   }
+	   if(table.equalsIgnoreCase("NPC")) {
+		   items = QueryManager.getNPCNames();
+	   }
+	   if(table.equalsIgnoreCase("ITEM")) {
+		   items = QueryManager.getItemNames();
+	   }
+	   if(table.equalsIgnoreCase("WEAPON")) {
+		   items = QueryManager.getWeaponNames();
+	   }
+	   if(table.equalsIgnoreCase("WEARABLE")) {
+		   items = QueryManager.getWearableNames();
+	   }
+	   for(int i = 0; i < items.size(); i++) {
+		   faq_where_row_box.getItems().add(items.get(i));
+	   }
+	   
+   }
    
     
    

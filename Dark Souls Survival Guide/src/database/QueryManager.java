@@ -18,6 +18,7 @@ import drivers.ConnectionDriver;
 public class QueryManager {
 
 	
+	
 	/**
 	 * 
 	 * @return a <code> ArrayList </code> of the location names 
@@ -205,5 +206,23 @@ public class QueryManager {
 		resultSet.next();
 		description = resultSet.getString(1);
 		return description;
+	}
+
+
+	public static ArrayList<String> getLocationsFoundIn(String table, String row) throws SQLException{
+	
+		ArrayList<String> locationList = new ArrayList<String>();
+
+		final String query = "SELECT LOCATION_NAME FROM LOCATION, "+ table +" "
+				+ "WHERE LOCATION.LOCATION_NAME = '"+ table +"'.FOUND_IN";
+		Statement statement = ConnectionDriver.connection.createStatement();
+
+		ResultSet resultSet = statement.executeQuery(query);
+			
+		while(resultSet.next()) {
+			//System.out.println(resultSet.getString(1));
+			locationList.add(resultSet.getString(1));
+		}
+		return locationList;
 	}
 }
