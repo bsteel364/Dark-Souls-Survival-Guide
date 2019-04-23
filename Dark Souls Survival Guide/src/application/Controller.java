@@ -156,7 +156,7 @@ public class Controller implements Initializable {
 	   item_description.setText(description);
    }
    
-   ////////////////////////// ITEMS TAB ////////////////////////////////
+   ////////////////////////// BOSS TAB ////////////////////////////////
    @FXML public ListView<String> boss_list;
    @FXML public TextArea boss_description;
    
@@ -246,7 +246,7 @@ public class Controller implements Initializable {
    @FXML public ComboBox<String> faq_where_row_box;
    @FXML public TextArea faq_where_result;
    
-   public void fillComboBoxes() {
+   public void fillComboBoxes() throws SQLException {
 	   fillWhereTableBox();
    }
    
@@ -280,9 +280,30 @@ public class Controller implements Initializable {
 	   }
 	   for(int i = 0; i < items.size(); i++) {
 		   faq_where_row_box.getItems().add(items.get(i));
-	   }
-	   
+	   }	   	      
    }
+   
+   public void whereCanIFind() throws SQLException {
+	   String table = faq_where_table_box.getSelectionModel().getSelectedItem().toUpperCase();
+	   String selectedItem;
+	   ArrayList<String> locationsFoundIn = new ArrayList<String>();
+	   try {
+		  selectedItem = faq_where_row_box.getSelectionModel().getSelectedItem();
+		  locationsFoundIn = QueryManager.getLocationsFoundIn(table, selectedItem);
+		  try {
+			  for(int i = 0; i < locationsFoundIn.size(); i++) {
+				   faq_where_result.setText(locationsFoundIn.get(i) + ", ");
+			   }
+		  }catch(IndexOutOfBoundsException e) {
+			  System.out.println(".");
+		  }
+		  
+	   }catch(NullPointerException e) {
+		   System.out.println("-");
+	   }
+   }
+   
+   
    
     
    

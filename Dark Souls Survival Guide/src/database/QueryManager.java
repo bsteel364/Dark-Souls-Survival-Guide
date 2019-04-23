@@ -28,7 +28,7 @@ public class QueryManager {
 		
 		ArrayList<String> locationList = new ArrayList<String>();
 	
-		final String query = "SELECT LOCATION_NAME FROM LOCATION";
+		final String query = "SELECT ID FROM LOCATION";
 		Statement statement = ConnectionDriver.connection.createStatement();
 	
 		ResultSet resultSet = statement.executeQuery(query);
@@ -44,7 +44,7 @@ public class QueryManager {
 		/* REMEMBER - Sanitize SQL query for apostrophes, SQL exception */
 		String description = new String();
 		locationName = locationName.replace("'", "\'");  //This is NOT working yet...
-		final String query = "SELECT DESCRIPTION FROM LOCATION WHERE LOCATION_NAME = '" + locationName + "'";
+		final String query = "SELECT DESCRIPTION FROM LOCATION WHERE ID = '" + locationName + "'";
 		Statement statement = ConnectionDriver.connection.createStatement();
 		
 		ResultSet resultSet = statement.executeQuery(query);
@@ -61,7 +61,7 @@ public class QueryManager {
 		
 		ArrayList<String> locationList = new ArrayList<String>();
 	
-		final String query = "SELECT ITEM_ID FROM ITEM";
+		final String query = "SELECT ID FROM ITEM";
 		Statement statement = ConnectionDriver.connection.createStatement();
 	
 		ResultSet resultSet = statement.executeQuery(query);
@@ -77,7 +77,7 @@ public class QueryManager {
 	public static String getItemDescription(String itemName) throws SQLException {
 		String description = new String();
 		
-		final String query = "SELECT DESCRIPTION FROM ITEM WHERE ITEM_ID = '" + itemName + "'";
+		final String query = "SELECT DESCRIPTION FROM ITEM WHERE ID = '" + itemName + "'";
 		Statement statement = ConnectionDriver.connection.createStatement();
 		
 		ResultSet resultSet = statement.executeQuery(query);
@@ -92,7 +92,7 @@ public class QueryManager {
 		
 		ArrayList<String> NPCList = new ArrayList<String>();
 	
-		final String query = "SELECT NPC_NAME FROM NPC";
+		final String query = "SELECT ID FROM NPC";
 		Statement statement = ConnectionDriver.connection.createStatement();
 	
 		ResultSet resultSet = statement.executeQuery(query);
@@ -108,7 +108,7 @@ public class QueryManager {
 	public static String getNPCDescription(String NPCName) throws SQLException {
 		String description = new String();
 		
-		final String query = "SELECT DESCRIPTION FROM NPC WHERE NPC_NAME = '" + NPCName + "'";
+		final String query = "SELECT DESCRIPTION FROM NPC WHERE ID = '" + NPCName + "'";
 		Statement statement = ConnectionDriver.connection.createStatement();
 		
 		ResultSet resultSet = statement.executeQuery(query);
@@ -122,7 +122,7 @@ public class QueryManager {
 		
 		ArrayList<String> BossList = new ArrayList<String>();
 	
-		final String query = "SELECT BOSS_ID FROM BOSS";
+		final String query = "SELECT ID FROM BOSS";
 		Statement statement = ConnectionDriver.connection.createStatement();
 	
 		ResultSet resultSet = statement.executeQuery(query);
@@ -138,7 +138,7 @@ public class QueryManager {
 	public static String getBossDescription(String BossName) throws SQLException {
 		String description = new String();
 		
-		final String query = "SELECT DESCRIPTION FROM BOSS WHERE BOSS_ID = '" + BossName + "'";
+		final String query = "SELECT DESCRIPTION FROM BOSS WHERE ID = '" + BossName + "'";
 		Statement statement = ConnectionDriver.connection.createStatement();
 		
 		ResultSet resultSet = statement.executeQuery(query);
@@ -152,7 +152,7 @@ public class QueryManager {
 		
 		ArrayList<String> WeaponList = new ArrayList<String>();
 	
-		final String query = "SELECT WEAPON_ID FROM WEAPON";
+		final String query = "SELECT ID FROM WEAPON";
 		Statement statement = ConnectionDriver.connection.createStatement();
 	
 		ResultSet resultSet = statement.executeQuery(query);
@@ -168,7 +168,7 @@ public class QueryManager {
 	public static String getWeaponDescription(String WeaponName) throws SQLException {
 		String description = new String();
 		
-		final String query = "SELECT DESCRIPTION FROM WEAPON WHERE WEAPON_ID = '" + WeaponName + "'";
+		final String query = "SELECT DESCRIPTION FROM WEAPON WHERE ID = '" + WeaponName + "'";
 		Statement statement = ConnectionDriver.connection.createStatement();
 		
 		ResultSet resultSet = statement.executeQuery(query);
@@ -182,7 +182,7 @@ public class QueryManager {
 		
 		ArrayList<String> WearableList = new ArrayList<String>();
 	
-		final String query = "SELECT WEARABLE_ID FROM WEARABLE";
+		final String query = "SELECT ID FROM WEARABLE";
 		Statement statement = ConnectionDriver.connection.createStatement();
 	
 		ResultSet resultSet = statement.executeQuery(query);
@@ -198,7 +198,7 @@ public class QueryManager {
 	public static String getWearableDescription(String WearableName) throws SQLException {
 		String description = new String();
 		
-		final String query = "SELECT DESCRIPTION FROM WEARABLE WHERE WEARABLE_ID = '" + WearableName + "'";
+		final String query = "SELECT DESCRIPTION FROM WEARABLE WHERE ID = '" + WearableName + "'";
 		Statement statement = ConnectionDriver.connection.createStatement();
 		
 		ResultSet resultSet = statement.executeQuery(query);
@@ -212,9 +212,8 @@ public class QueryManager {
 	public static ArrayList<String> getLocationsFoundIn(String table, String row) throws SQLException{
 	
 		ArrayList<String> locationList = new ArrayList<String>();
-
-		final String query = "SELECT LOCATION_NAME FROM LOCATION, "+ table +" "
-				+ "WHERE LOCATION.LOCATION_NAME = '"+ table +"'.FOUND_IN";
+		final String query = "SELECT LOCATION.ID FROM LOCATION, "+ table +" "
+				+ "WHERE LOCATION.ID = "+ table +".FOUND_IN AND "+ table +".ID = '"+row + "'";
 		Statement statement = ConnectionDriver.connection.createStatement();
 
 		ResultSet resultSet = statement.executeQuery(query);
@@ -225,4 +224,6 @@ public class QueryManager {
 		}
 		return locationList;
 	}
+	
+	
 }

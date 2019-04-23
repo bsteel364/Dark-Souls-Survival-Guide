@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -109,10 +110,11 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ComboBox fx:id="faq_where_table_box" layoutX="172.0" layoutY="80.0" prefWidth="150.0" />
-                        <ComboBox fx:id="faq_where_row_box" layoutX="355.0" layoutY="80.0" onMouseClicked="#fillWhereRowBox" prefWidth="150.0" />
-                        <Label layoutX="55.0" layoutY="84.0" prefHeight="17.0" prefWidth="117.0" text="Where Can I find:" />
-                        <TextArea fx:id="faq_where_result" editable="false" layoutX="576.0" layoutY="80.0" prefHeight="37.0" prefWidth="247.0" />
+                        <ComboBox fx:id="faq_where_table_box" layoutX="172.0" layoutY="26.0" prefWidth="150.0" />
+                        <ComboBox fx:id="faq_where_row_box" layoutX="355.0" layoutY="26.0" onMouseClicked="#fillWhereRowBox" prefWidth="150.0" />
+                        <Label layoutX="55.0" layoutY="30.0" prefHeight="17.0" prefWidth="117.0" text="Where Can I find:" />
+                        <TextArea fx:id="faq_where_result" editable="false" layoutX="637.0" layoutY="26.0" prefHeight="359.0" prefWidth="247.0" />
+                        <Button layoutX="543.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#whereCanIFind" text="Button" />
                      </children></AnchorPane>
               </content>
             </Tab>
