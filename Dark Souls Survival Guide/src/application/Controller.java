@@ -245,12 +245,19 @@ public class Controller implements Initializable {
    @FXML public ComboBox<String> faq_where_table_box;
    @FXML public ComboBox<String> faq_where_row_box;
    @FXML public TextArea faq_where_result;
+   @FXML public ComboBox<String> faq_drops_box;
+   @FXML public ComboBox<String> faq_sells_box;
+   @FXML public ComboBox<String> faq_souls_box;
    
    public void fillComboBoxes() throws SQLException {
 	   fillWhereTableBox();
+	   fillDropsBox();
+	   fillSellsBox();
+	   fillNPCSoulsBox();
    }
    
    public void fillWhereTableBox() {
+	   faq_where_table_box.getItems().clear();
 	   faq_where_table_box.getItems().add("Boss");
 	   faq_where_table_box.getItems().add("NPC");
 	   faq_where_table_box.getItems().add("Weapon");
@@ -292,8 +299,11 @@ public class Controller implements Initializable {
 		  locationsFoundIn = QueryManager.getLocationsFoundIn(table, selectedItem);
 		  try {
 			  for(int i = 0; i < locationsFoundIn.size(); i++) {
-				   faq_where_result.setText(locationsFoundIn.get(i) + ", ");
+				   faq_where_result.setText(locationsFoundIn.get(i));
 			   }
+			  if(locationsFoundIn.isEmpty()) {
+				  faq_where_result.setText("Unknown, or not location specific");
+			  }
 		  }catch(IndexOutOfBoundsException e) {
 			  System.out.println(".");
 		  }
@@ -303,7 +313,114 @@ public class Controller implements Initializable {
 	   }
    }
    
+   public void fillDropsBox() throws SQLException {
+	   ArrayList<String> npc = QueryManager.getNPCNames();
+	   for(int i = 0; i < npc.size(); i++) {
+		   faq_drops_box.getItems().add(npc.get(i));
+	   }
+   }
    
+   public void whoDrops() {
+	   String selected;
+	   ArrayList<String> drops = new ArrayList<String>();
+	   try {
+		   selected = faq_drops_box.getSelectionModel().getSelectedItem();
+	   }catch(NullPointerException e) {
+		   selected = "";
+	   }
+	   if(selected != "") {
+		   try {
+			   drops = QueryManager.getDrops(selected);
+		   }catch(SQLException e) {
+			   drops.add("Soul of Lost Undead");
+		   }
+		   if(drops.isEmpty()) {
+			   drops.add("Soul of Lost Undead");
+		   }
+		   String dropString ="";
+		   for(int i = 0; i < drops.size(); i++) {
+			   if(i > 0) {
+					  dropString = dropString + "\n";
+				  }
+			  dropString = dropString+drops.get(i);
+			  
+		   }
+		   faq_where_result.setText(dropString);
+		   
+	   }
+
+   }
+   
+   public void fillSellsBox() throws SQLException {
+	   ArrayList<String> item = QueryManager.getItemNames();
+	   for(int i = 0; i < item.size(); i++) {
+		   faq_sells_box.getItems().add(item.get(i));
+	   }
+   }
+   
+   public void whoSells() {
+	   String selected;
+	   ArrayList<String> sells = new ArrayList<String>();
+	   try {
+		   selected = faq_sells_box.getSelectionModel().getSelectedItem();
+	   }catch(NullPointerException e) {
+		   selected = "";
+	   }
+	   if(selected != "") {
+		   try {
+			   sells = QueryManager.getMerchant(selected);
+		   }catch(SQLException e) {
+			   sells.add("Apparently Nobody...");
+		   }
+		   if(sells.isEmpty()) {
+			   sells.add("Apparently Nobody...");
+		   }
+		   String dropString ="";
+		   for(int i = 0; i < sells.size(); i++) {
+			   if(i > 0) {
+					  dropString = dropString + "\n";
+				  }
+			  dropString = dropString+sells.get(i);
+			  
+		   }
+		   faq_where_result.setText(dropString);
+		   
+	   }
+
+   }
+   
+   public void fillNPCSoulsBox() throws SQLException {
+	   ArrayList<String> npc = QueryManager.getNPCNames();
+	   for(int i = 0; i < npc.size(); i++) {
+		   faq_souls_box.getItems().add(npc.get(i));
+	   }
+   }
+   
+   public void howManySouls() {
+	   String selected;
+	   //ArrayList<String> drops = new ArrayList<String>();
+	   String souls = "";
+	   try {
+		   selected = faq_souls_box.getSelectionModel().getSelectedItem();
+	   }catch(NullPointerException e) {
+		   selected = "";
+	   }
+	   if(selected != "") {
+		   try {
+			   souls = QueryManager.getNumSouls(selected);
+		   }catch(SQLException e) {
+			   souls = "0";
+			   //System.out.println(e);
+		   }
+		   if(souls.equals("")) {
+			   souls = "0";
+			   //System.out.println("the other one");
+		   }
+		   faq_where_result.setText(selected + " has " + souls + " souls");
+	   }
+	   
+
+   }
    
     
    

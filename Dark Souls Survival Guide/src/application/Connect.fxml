@@ -3,28 +3,22 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="338.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
       <HBox fillHeight="false" layoutX="91.0" layoutY="302.0" prefHeight="62.0" prefWidth="157.0">
          <children>
-            <Button fx:id="connectButton" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#connect" prefHeight="73.0" prefWidth="162.0" text="Connect" textAlignment="CENTER" textFill="#a81400" HBox.hgrow="ALWAYS">
+            <Button fx:id="connectButton" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#connect" prefHeight="73.0" prefWidth="162.0" text="Connect" textAlignment="CENTER" textFill="#a67e00" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Palatino Linotype" size="22.0" />
+                  <Font name="OptimusPrinceps" size="24.0" />
                </font>
                <effect>
-                  <Lighting bumpInput="$null" surfaceScale="10.0">
-                     <light>
-                        <Light.Distant />
-                     </light>
-                  </Lighting>
+                  <InnerShadow />
                </effect>
             </Button>
          </children>
@@ -45,9 +39,9 @@
       </Pane>
       <Pane layoutX="2.0" layoutY="7.0" prefHeight="62.0" prefWidth="338.0">
          <children>
-            <Text fill="#a80000" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dark Souls Survival Guide" textAlignment="CENTER" wrappingWidth="337.9999965429306">
+            <Text fill="#b28500" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dark Souls Survival Guide" textAlignment="CENTER" wrappingWidth="337.9999965429306">
                <font>
-                  <Font name="Palatino Linotype" size="24.0" />
+                  <Font name="OptimusPrinceps" size="24.0" />
                </font>
             </Text>
          </children>

@@ -225,5 +225,49 @@ public class QueryManager {
 		return locationList;
 	}
 	
+	public static ArrayList<String> getDrops(String npc) throws SQLException{
+		ArrayList<String> drops = new ArrayList<String>();
+		final String query = "SELECT ITEM_ID FROM DROPS "
+				+ "WHERE NPC_ID = '" + npc + "'";
+		Statement statement = ConnectionDriver.connection.createStatement();
+
+		ResultSet resultSet = statement.executeQuery(query);
+			
+		while(resultSet.next()) {
+			//System.out.println(resultSet.getString(1));
+			drops.add(resultSet.getString(1));
+		}
+		return drops;
+	}
+	
+	public static ArrayList<String> getMerchant(String item) throws SQLException{
+		ArrayList<String> drops = new ArrayList<String>();
+		final String query = "SELECT MERCHANT_ID FROM SELLS "
+				+ "WHERE ITEM_ID = '" + item + "'";
+		Statement statement = ConnectionDriver.connection.createStatement();
+
+		ResultSet resultSet = statement.executeQuery(query);
+			
+		while(resultSet.next()) {
+			//System.out.println(resultSet.getString(1));
+			drops.add(resultSet.getString(1));
+		}
+		return drops;
+	}
+	
+	public static String getNumSouls(String npc) throws SQLException{
+		String souls = "";
+		final String query = "SELECT SOULS FROM NPC "
+				+ "WHERE ID = '" + npc + "'";
+		Statement statement = ConnectionDriver.connection.createStatement();
+
+		ResultSet resultSet = statement.executeQuery(query);
+			
+		while(resultSet.next()) {
+			//System.out.println(resultSet.getString(1));
+			souls = resultSet.getString(1);
+		}
+		return souls;
+	}
 	
 }

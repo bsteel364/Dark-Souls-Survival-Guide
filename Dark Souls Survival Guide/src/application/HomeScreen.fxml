@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -13,6 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
@@ -112,9 +112,39 @@
                      <children>
                         <ComboBox fx:id="faq_where_table_box" layoutX="172.0" layoutY="26.0" prefWidth="150.0" />
                         <ComboBox fx:id="faq_where_row_box" layoutX="355.0" layoutY="26.0" onMouseClicked="#fillWhereRowBox" prefWidth="150.0" />
-                        <Label layoutX="55.0" layoutY="30.0" prefHeight="17.0" prefWidth="117.0" text="Where Can I find:" />
-                        <TextArea fx:id="faq_where_result" editable="false" layoutX="637.0" layoutY="26.0" prefHeight="359.0" prefWidth="247.0" />
-                        <Button layoutX="543.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#whereCanIFind" text="Button" />
+                        <TextArea fx:id="faq_where_result" editable="false" layoutX="637.0" layoutY="26.0" prefHeight="359.0" prefWidth="247.0" wrapText="true" />
+                        <Button layoutX="543.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#whereCanIFind" text="Search" />
+                        <Text layoutX="55.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What Does" wrappingWidth="82.13671875">
+                           <font>
+                              <Font name="OptimusPrinceps" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="355.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drop" wrappingWidth="59.671875">
+                           <font>
+                              <Font name="OptimusPrinceps" size="14.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="543.0" layoutY="84.0" mnemonicParsing="false" onMouseClicked="#whoDrops" text="Search" />
+                        <ComboBox fx:id="faq_drops_box" layoutX="172.0" layoutY="84.0" prefWidth="150.0" />
+                        <Text layoutX="55.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Who Sells" wrappingWidth="89.13671875">
+                           <font>
+                              <Font name="OptimusPrinceps" size="14.0" />
+                           </font>
+                        </Text>
+                        <ComboBox fx:id="faq_sells_box" layoutX="172.0" layoutY="134.0" prefWidth="150.0" />
+                        <Button layoutX="543.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#whoSells" text="Search" />
+                        <Text layoutX="55.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="# of Souls from" wrappingWidth="102.228515625">
+                           <font>
+                              <Font name="OptimusPrinceps" size="14.0" />
+                           </font>
+                        </Text>
+                        <ComboBox fx:id="faq_souls_box" layoutX="172.0" layoutY="185.0" prefWidth="150.0" />
+                        <Button layoutX="543.0" layoutY="185.0" mnemonicParsing="false" onMouseClicked="#howManySouls" text="Search" />
+                        <Text layoutX="55.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Where is" wrappingWidth="61.0078125">
+                           <font>
+                              <Font name="OptimusPrinceps" size="14.0" />
+                           </font>
+                        </Text>
                      </children></AnchorPane>
               </content>
             </Tab>
