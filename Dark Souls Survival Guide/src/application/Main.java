@@ -6,6 +6,7 @@
 package application;
 
 import java.io.File;
+import java.net.MalformedURLException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -27,13 +28,7 @@ public class Main extends Application {
 	
     public static void main(String[] args) throws SQLException {
         launch(args);     		 
-//      	
-//      //plays when the application closes  
-//    	Media confirm = new Media(new File("src/slash.mp3").toURI().toString());
-//    	MediaPlayer btnNoise = new MediaPlayer(confirm);
-//    	
-//    	btnNoise.play();
-//    	
+
     	
         System.out.println("Application Closed");
         
@@ -46,8 +41,28 @@ public class Main extends Application {
         stage.setTitle("Connection Login");
         Scene scene = new Scene(root);
         scene.getStylesheets().add("application1.css");//why won't you accept my fonts
-        System.out.println("dsfsdfdsdsfd");
-        Font myFont = Font.loadFont(Main.class.getResourceAsStream("/OptimusPrinceps.tff"), 14);
+        
+      	
+        //plays when the application closes  
+    	Media confirm = new Media(new File("src/slash.mp3").toURI().toString());
+    	MediaPlayer btnNoise = new MediaPlayer(confirm);
+    	
+    	btnNoise.play();
+    	
+        
+        
+//        String fontSheet = fileToStylesheetString( new File ("Dark-Souls-Survival-Guide//Dark Souls Survival Guide//bin//fonts//OptimusPrinceps.ttf") );
+//     
+//        if ( fontSheet == null ) {
+//            throw new Exception("fontSheet was NULL. Check the location of the .tff or .otf files.");
+//        } else {
+//        	Font.loadFont(fontSheet, 14);
+//           // scene.getStylesheets().add(fontSheet);
+//            
+//        }
+        
+//        System.out.println("dsfsdfdsdsfd");
+//        Font myFont = Font.loadFont(Main.class.getResourceAsStream("/OptimusPrinceps.tff"), 14);
         stage.setScene(scene);
         
         stage.show();
@@ -55,4 +70,11 @@ public class Main extends Application {
     }
 
 
+public String fileToStylesheetString ( File stylesheetFile ) {
+    try {
+        return stylesheetFile.toURI().toURL().toString();
+    } catch ( MalformedURLException e ) {
+        return null;
+    }
+}
 }
