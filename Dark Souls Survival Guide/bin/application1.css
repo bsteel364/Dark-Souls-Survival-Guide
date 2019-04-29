@@ -78,7 +78,7 @@
 }/*Add in for bottom pane as well*/
 
 .tab-pane *.tab-header-background{
-	-fx-background-color: #cfb5b5, derive(#cfa5a5, -38%);
+	-fx-background-color: #bf9595, derive(#bf9595, -50%);
 	-fx-effect: innershadow(gaussian , rgba(153,148,148,0.4) , 2, 0.0 , 0 , 0);
 }
 
@@ -128,17 +128,19 @@
 
 
 .menu:hover {
-    -fx-background-color: #a05050;
+    -fx-background-color: #654321;
 }
 
 .menu-item .label{
      -fx-font-size: 14 pt;
-      -fx-background-color: #a05050;
+     -fx-background-color: #654321;
+     
+      /*-fx-background-color: #a05050;*/
 }
 
 .context-menu {
     
-    -fx-background-color: #a05050;
+    -fx-background-color: #654321;
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
     -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; 
