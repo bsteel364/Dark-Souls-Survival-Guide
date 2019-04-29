@@ -16,7 +16,7 @@
  
 .root{
 	
-    -fx-background-color: #513232;
+    -fx-background-color: #330303;
     -fx-font-family: "OptimusPrinceps";
 }
 
@@ -41,8 +41,8 @@
 
 .text-area {
     -fx-font-family: "OptimusPrinceps";
-    -fx-font-size: 15;
-    -fx-text-fill: white;
+    -fx-font-size: 18;
+    -fx-text-fill: #a88e00;
     -fx-display-caret:true;
 }
 

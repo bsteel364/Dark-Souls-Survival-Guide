@@ -79,7 +79,7 @@
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <ListView fx:id="item_list" layoutX="14.0" layoutY="14.0" onMouseClicked="#writeItemDescription" prefHeight="480.0" prefWidth="350.0" />
-                                          <TextArea fx:id="item_description" layoutX="405.0" layoutY="14.0" prefHeight="200.0" prefWidth="400.0" />
+                                          <TextArea fx:id="item_description" layoutX="405.0" layoutY="14.0" prefHeight="200.0" prefWidth="400.0" wrapText="true" />
                                        </children></AnchorPane>
                                 </content>
                               </Tab>
@@ -88,7 +88,7 @@
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <ListView fx:id="weapon_list" layoutX="14.0" layoutY="14.0" onMouseClicked="#writeWeaponDescription" prefHeight="480.0" prefWidth="350.0" />
-                                          <TextArea fx:id="weapon_description" layoutX="405.0" layoutY="14.0" prefHeight="200.0" prefWidth="400.0" />
+                                          <TextArea fx:id="weapon_description" layoutX="405.0" layoutY="14.0" prefHeight="200.0" prefWidth="400.0" wrapText="true" />
                                        </children></AnchorPane>
                                 </content>
                               </Tab>
@@ -97,7 +97,10 @@
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <ListView fx:id="wearable_list" layoutX="14.0" layoutY="14.0" onMouseClicked="#writeWearableDescription" prefHeight="480.0" prefWidth="350.0" />
-                                          <TextArea fx:id="wearable_description" layoutX="405.0" layoutY="14.0" prefHeight="200.0" prefWidth="400.0" />
+                                          <TextArea fx:id="wearable_description" layoutX="405.0" layoutY="14.0" prefHeight="200.0" prefWidth="400.0" wrapText="true">
+                                             <font>
+                                                <Font name="OptimusPrinceps" size="12.0" />
+                                             </font></TextArea>
                                        </children></AnchorPane>
                                 </content>
                               </Tab>
@@ -113,38 +116,74 @@
                         <ComboBox fx:id="faq_where_table_box" layoutX="172.0" layoutY="26.0" prefWidth="150.0" />
                         <ComboBox fx:id="faq_where_row_box" layoutX="355.0" layoutY="26.0" onMouseClicked="#fillWhereRowBox" prefWidth="150.0" />
                         <TextArea fx:id="faq_where_result" editable="false" layoutX="637.0" layoutY="26.0" prefHeight="359.0" prefWidth="247.0" wrapText="true" />
-                        <Button layoutX="543.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#whereCanIFind" text="Search" />
-                        <Text layoutX="55.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What Does" wrappingWidth="82.13671875">
+                        <Button layoutX="543.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#whereCanIFind" text="Search" textFill="#a88e00" />
+                        <Text fill="#a88e00" layoutX="55.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What Does" wrappingWidth="82.13671875">
                            <font>
                               <Font name="OptimusPrinceps" size="14.0" />
                            </font>
                         </Text>
-                        <Text layoutX="355.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drop" wrappingWidth="59.671875">
+                        <Text fill="#a88e00" layoutX="355.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drop" wrappingWidth="59.671875">
                            <font>
                               <Font name="OptimusPrinceps" size="14.0" />
                            </font>
                         </Text>
-                        <Button layoutX="543.0" layoutY="84.0" mnemonicParsing="false" onMouseClicked="#whoDrops" text="Search" />
+                        <Button layoutX="543.0" layoutY="84.0" mnemonicParsing="false" onMouseClicked="#whoDrops" text="Search" textFill="#a88e00" />
                         <ComboBox fx:id="faq_drops_box" layoutX="172.0" layoutY="84.0" prefWidth="150.0" />
-                        <Text layoutX="55.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Who Sells" wrappingWidth="89.13671875">
+                        <Text fill="#a88e00" layoutX="51.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Who Sells" wrappingWidth="89.13671875">
                            <font>
                               <Font name="OptimusPrinceps" size="14.0" />
                            </font>
                         </Text>
-                        <ComboBox fx:id="faq_sells_box" layoutX="172.0" layoutY="134.0" prefWidth="150.0" />
-                        <Button layoutX="543.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#whoSells" text="Search" />
-                        <Text layoutX="55.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="# of Souls from" wrappingWidth="102.228515625">
+                        <ComboBox fx:id="faq_sells_box" layoutX="172.0" layoutY="146.0" prefWidth="150.0" />
+                        <Button layoutX="543.0" layoutY="146.0" mnemonicParsing="false" onMouseClicked="#whoSells" text="Search" textFill="#a88e00" />
+                        <Text fill="#a88e00" layoutX="45.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="# of Souls from" wrappingWidth="102.228515625">
                            <font>
                               <Font name="OptimusPrinceps" size="14.0" />
                            </font>
                         </Text>
-                        <ComboBox fx:id="faq_souls_box" layoutX="172.0" layoutY="185.0" prefWidth="150.0" />
-                        <Button layoutX="543.0" layoutY="185.0" mnemonicParsing="false" onMouseClicked="#howManySouls" text="Search" />
-                        <Text layoutX="55.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Where is" wrappingWidth="61.0078125">
+                        <ComboBox fx:id="faq_souls_box" layoutX="172.0" layoutY="213.0" prefWidth="150.0" />
+                        <Button layoutX="542.0" layoutY="214.0" mnemonicParsing="false" onMouseClicked="#howManySouls" text="Search" textFill="#a88e00">
+                           <font>
+                              <Font name="OptimusPrinceps" size="12.0" />
+                           </font></Button>
+                        <Text fill="#a88e00" layoutX="55.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Where is" wrappingWidth="61.0078125">
                            <font>
                               <Font name="OptimusPrinceps" size="14.0" />
                            </font>
                         </Text>
+                        <Text fill="#a88e00" layoutX="51.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Armors that Protect against:" wrappingWidth="270.13671875">
+                           <font>
+                              <Font name="OptimusPrinceps" size="14.0" />
+                           </font>
+                        </Text>
+                        <ComboBox fx:id="faq_protections_box" layoutX="355.0" layoutY="279.0" prefWidth="150.0" />
+                        <Button layoutX="542.0" layoutY="280.0" mnemonicParsing="false" onMouseClicked="#writeArmorsProtection" text="Search" textFill="#a88e00">
+                           <font>
+                              <Font name="OptimusPrinceps" size="12.0" />
+                           </font>
+                        </Button>
+                        <Text fill="#a88e00" layoutX="51.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NPC s that:" wrappingWidth="120.13671875">
+                           <font>
+                              <Font name="OptimusPrinceps" size="14.0" />
+                           </font>
+                        </Text>
+                        <ComboBox fx:id="npc_property_box" layoutX="172.0" layoutY="349.0" prefWidth="150.0" />
+                        <Button layoutX="542.0" layoutY="350.0" mnemonicParsing="false" onMouseClicked="#respawnableEnemies" text="Search" textFill="#a88e00">
+                           <font>
+                              <Font name="OptimusPrinceps" size="12.0" />
+                           </font>
+                        </Button>
+                        <Text fill="#a88e00" layoutX="48.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="# Bonfires in:" wrappingWidth="95.13671875">
+                           <font>
+                              <Font name="OptimusPrinceps" size="14.0" />
+                           </font>
+                        </Text>
+                        <ComboBox fx:id="bonfires_box" layoutX="172.0" layoutY="423.0" prefWidth="150.0" />
+                        <Button layoutX="543.0" layoutY="423.0" mnemonicParsing="false" onMouseClicked="#getBonfires" text="Search" textFill="#a88e00">
+                           <font>
+                              <Font name="OptimusPrinceps" size="12.0" />
+                           </font>
+                        </Button>
                      </children></AnchorPane>
               </content>
             </Tab>

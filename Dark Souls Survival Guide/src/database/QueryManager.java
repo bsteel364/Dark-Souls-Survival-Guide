@@ -207,6 +207,19 @@ public class QueryManager {
 		description = resultSet.getString(1);
 		return description;
 	}
+	
+	public static String getWearableProtections(String WearableName) throws SQLException {
+		String description = new String();
+		
+		final String query = "SELECT PROTECTIONS FROM WEARABLE WHERE ID = '" + WearableName + "'";
+		Statement statement = ConnectionDriver.connection.createStatement();
+		
+		ResultSet resultSet = statement.executeQuery(query);
+		
+		resultSet.next();
+		description = resultSet.getString(1);
+		return description;
+	}
 
 
 	public static ArrayList<String> getLocationsFoundIn(String table, String row) throws SQLException{
@@ -255,6 +268,20 @@ public class QueryManager {
 		return drops;
 	}
 	
+	public static ArrayList<String> getSoldItemsList() throws SQLException{
+		ArrayList<String> drops = new ArrayList<String>();
+		final String query = "SELECT ITEM_ID FROM SELLS";
+		Statement statement = ConnectionDriver.connection.createStatement();
+
+		ResultSet resultSet = statement.executeQuery(query);
+			
+		while(resultSet.next()) {
+			//System.out.println(resultSet.getString(1));
+			drops.add(resultSet.getString(1));
+		}
+		return drops;
+	}
+	
 	public static String getNumSouls(String npc) throws SQLException{
 		String souls = "";
 		final String query = "SELECT SOULS FROM NPC "
@@ -270,4 +297,60 @@ public class QueryManager {
 		return souls;
 	}
 	
+	public static ArrayList<String> getArmorsThatProtect(String protection) throws SQLException{
+		
+		ArrayList<String> locationList = new ArrayList<String>();
+		final String query = "SELECT ID FROM WEARABLE WHERE PROTECTIONS = '" + protection + "'";
+		Statement statement = ConnectionDriver.connection.createStatement();
+
+		ResultSet resultSet = statement.executeQuery(query);
+			
+		while(resultSet.next()) {
+			//System.out.println(resultSet.getString(1));
+			locationList.add(resultSet.getString(1));
+		}
+		return locationList;
+	}
+	
+	public static ArrayList<String> getRespawnableEnemies() throws SQLException{
+		ArrayList<String> enemylist = new ArrayList<String>();
+		final String query = "SELECT ID FROM ENEMY WHERE RESPAWNS = 'YES'";
+		Statement statement = ConnectionDriver.connection.createStatement();
+
+		ResultSet resultSet = statement.executeQuery(query);
+			
+		while(resultSet.next()) {
+			//System.out.println(resultSet.getString(1));
+			enemylist.add(resultSet.getString(1));
+		}
+		return enemylist;
+	}
+	
+	public static ArrayList<String> getNonRespawnableEnemies() throws SQLException{
+		ArrayList<String> enemylist = new ArrayList<String>();
+		final String query = "SELECT ID FROM ENEMY WHERE RESPAWNS = 'NO'";
+		Statement statement = ConnectionDriver.connection.createStatement();
+
+		ResultSet resultSet = statement.executeQuery(query);
+			
+		while(resultSet.next()) {
+			//System.out.println(resultSet.getString(1));
+			enemylist.add(resultSet.getString(1));
+		}
+		return enemylist;
+	}
+
+	public static String getNumBonfires(String location) throws SQLException{
+		String num = "";
+		final String query = "SELECT BONFIRES FROM LOCATION WHERE ID = '" + location + "'";
+		Statement statement = ConnectionDriver.connection.createStatement();
+
+		ResultSet resultSet = statement.executeQuery(query);
+			
+		while(resultSet.next()) {
+			//System.out.println(resultSet.getString(1));
+			num = (resultSet.getString(1));
+		}
+		return num;
+	}
 }

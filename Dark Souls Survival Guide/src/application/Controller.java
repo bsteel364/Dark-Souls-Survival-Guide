@@ -233,7 +233,20 @@ public class Controller implements Initializable {
 	   String selectedItem = wearable_list.getSelectionModel().getSelectedItem();
 	   String description = QueryManager.getWearableDescription(selectedItem);
 	   System.out.print(description);
-	   wearable_description.setText(description);
+	   String writeOut = description;
+	   String protections = QueryManager.getWearableProtections(selectedItem);
+	   writeOut = writeOut + "\n\n\n\n PROTECTIONS: " + protections;
+	   try {
+		   if(protections.equals("") || protections.isEmpty()) {
+			   wearable_description.setText(description);
+		   }else {
+			   wearable_description.setText(writeOut);
+		   }
+	   }catch(NullPointerException e) {
+		   wearable_description.setText(description);
+	   }
+	   
+	   
    }
    
    
@@ -248,12 +261,18 @@ public class Controller implements Initializable {
    @FXML public ComboBox<String> faq_drops_box;
    @FXML public ComboBox<String> faq_sells_box;
    @FXML public ComboBox<String> faq_souls_box;
+   @FXML public ComboBox<String> faq_protections_box;
+   @FXML public ComboBox<String> npc_property_box;
+   @FXML public ComboBox<String> bonfires_box;
    
    public void fillComboBoxes() throws SQLException {
 	   fillWhereTableBox();
 	   fillDropsBox();
 	   fillSellsBox();
 	   fillNPCSoulsBox();
+	   fillProtectionsBox();
+	   fillNPCPropertyBox();
+	   fillBonfireBox();
    }
    
    public void fillWhereTableBox() {
@@ -352,9 +371,11 @@ public class Controller implements Initializable {
    }
    
    public void fillSellsBox() throws SQLException {
-	   ArrayList<String> item = QueryManager.getItemNames();
+	   ArrayList<String> item = QueryManager.getSoldItemsList();
 	   for(int i = 0; i < item.size(); i++) {
-		   faq_sells_box.getItems().add(item.get(i));
+		   if(!faq_sells_box.getItems().contains(item.get(i))) {
+			   faq_sells_box.getItems().add(item.get(i));
+		   }
 	   }
    }
    
@@ -422,7 +443,88 @@ public class Controller implements Initializable {
 
    }
    
-    
+   public void fillProtectionsBox() {
+	   faq_protections_box.getItems().clear();
+	   faq_protections_box.getItems().clear();
+	   faq_protections_box.getItems().add("Poison");
+	   faq_protections_box.getItems().add("Toxic");
+	   faq_protections_box.getItems().add("Magic");
+	   faq_protections_box.getItems().add("Fire");
+	   faq_protections_box.getItems().add("Bleed");
+	   faq_protections_box.getItems().add("Curse");
+	   faq_protections_box.getItems().add("Lightning");
+   }
+   
+   public void writeArmorsProtection() {
+	   try {
+		   String selected = faq_protections_box.getSelectionModel().getSelectedItem();
+		   ArrayList<String> armors = QueryManager.getArmorsThatProtect(selected);
+		   String writeOut = "";
+		   for(int i = 0; i < armors.size(); i++) {
+			   writeOut = writeOut + armors.get(i) + "\n";
+		   }
+		   faq_where_result.setText(writeOut);
+	   }catch(NullPointerException e) {
+		   
+	   } catch (SQLException e) {
+		  
+	}
+	   
+   }
+   
+   public void fillNPCPropertyBox() {
+	   npc_property_box.getItems().clear();
+	   npc_property_box.getItems().add("respawn");
+	   npc_property_box.getItems().add("don't respawn");
+   }
+   
+   public void respawnableEnemies() {
+	   ArrayList<String> enemies;
+	   String writeOut = "";
+	   try {
+		   if(npc_property_box.getSelectionModel().getSelectedItem().equals("respawn")) {
+			   enemies = QueryManager.getRespawnableEnemies();
+			   for(int i = 0; i < enemies.size(); i++) {
+				   writeOut = writeOut + enemies.get(i) + "\n";
+			   }
+		   }else {
+			   enemies = QueryManager.getNonRespawnableEnemies();
+			   for(int i = 0; i < enemies.size(); i++) {
+				   writeOut = writeOut + enemies.get(i) + "\n";
+			   }
+		   }
+		   
+		   faq_where_result.setText(writeOut);
+	   }catch(SQLException e) {
+		   
+	   }catch(NullPointerException e) {
+		   
+	   }
+   }
+   
+   public void fillBonfireBox() {
+	   bonfires_box.getItems().clear();
+	   ArrayList<String> locations;
+	   try {
+		   locations = QueryManager.getLocationNames();
+		   for(int i = 0; i < locations.size(); i++) {
+			   bonfires_box.getItems().add(locations.get(i));
+		   }
+	   }catch(SQLException e) {
+		   
+	   }
+   }
+   
+   public void getBonfires() {
+	   String writeOut = "";
+	   try {
+		   faq_where_result.setText(QueryManager.getNumBonfires(bonfires_box.getSelectionModel().getSelectedItem()) + " Bonfires");
+	   }catch(SQLException e) {
+		   
+	   }catch(NullPointerException e) {
+		   
+	   }
+   }
    
 
 }

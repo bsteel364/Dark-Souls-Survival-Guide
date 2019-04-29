@@ -47,7 +47,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         scene.getStylesheets().add("application1.css");//why won't you accept my fonts
         System.out.println("dsfsdfdsdsfd");
-        Font myFont = Font.loadFont(Main.class.getResourceAsStream("/OptimusPrinceps.tff"), 14);
+        //Font myFont = Font.loadFont(Main.class.getResourceAsStream("/OptimusPrinceps.tff"), 14);
         stage.setScene(scene);
         
         stage.show();
